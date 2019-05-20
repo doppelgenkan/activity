@@ -1,8 +1,18 @@
 import numpy as np
 
 
-def _cutdata4fft(arr, init=0):
-    arr = arr[init:]
+def _cutdata4fft(arr, start=0):
+    '''
+    Return データの(startから数えた)要素のうち, 最大の2^n個の連続した要素を残した1D-numpy配列.
+    
+    Parameters
+    ----------
+    arr : array like
+        データの1D-numpy配列.
+    start : int, optional (0)
+        arrのうち, 残す要素の先頭のインデックス.
+    '''
+    arr = arr[first_record:]
     ll = 2 ** (len(format(len(arr), 'b')) - 1)
     return arr[:ll]
 
