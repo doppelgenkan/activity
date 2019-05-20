@@ -7,7 +7,7 @@ def _cutdata4fft(arr, start=0):
     
     Parameters
     ----------
-    arr : array like
+    arr : array-like
         データの1D-numpy配列.
     start : int, optional (0)
         arrのうち, 残す要素の先頭のインデックス.
@@ -34,7 +34,7 @@ def lpfilter(fl, cutoff_hz, samp_hz=1000, init=0, rmdc=True, istime=False):
         
     Parameters
     ----------
-    fl : array like
+    fl : array-like
         サンプリングデータ配列. 1D-numpy配列.
     cutoff_hz : int
         ローパスフィルターのカットオフ周波数.
