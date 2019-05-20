@@ -12,7 +12,7 @@ def _cutdata4fft(arr, start=0):
     start : int, optional (0)
         arrのうち, 残す要素の先頭のインデックス.
     '''
-    arr = arr[first_record:]
+    arr = arr[start:]
     ll = 2 ** (len(format(len(arr), 'b')) - 1)
     return arr[:ll]
 
