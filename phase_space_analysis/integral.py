@@ -8,7 +8,7 @@ def integral(x, s0, startindex, endindex, tau=0.001):
     Parameters
     ----------
     x : array-like
-        被積分データ配列.
+        被積分データ. 1-D numpy配列推奨.
     s0 : int or float
         初期値(積分定数).
     statindex : int
