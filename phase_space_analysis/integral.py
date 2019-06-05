@@ -13,7 +13,7 @@ def integral(x, s0, startindex, endindex, tau=0.001):
         初期値(積分定数).
     statindex : int
         被積分データ配列xの最初のindex.
-    endpoint : int
+    endindex : int
         被積分データ配列xの最後のindex.
     tau : float, optional (0.001)
         積分区切り幅.
