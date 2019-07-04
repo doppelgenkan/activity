@@ -1,24 +1,20 @@
 import numpy as np
 
 
-def _mean_padding(arr, startpoint=0):
-    arr = arr[startpoint:]
+def _mean_padding(arr):
     len_of_arr = len(arr)
     len_of_newarr = 2 ** len(format(len_of_arr, 'b'))
     additional_arr = np.ones(len_of_newarr - len_of_arr) * np.mean(arr)
     return np.hstack((arr, additional_arr))
 
 
-def _lpfilter(fl, kc, rmdc=False):
-    ll = len(fl)
-    Fk = np.fft.fft(fl)
-    Fk[kc+1:ll-kc] = 0
-    if rmdc == True:
-        Fk[0] = 0
-    return np.real(np.fft.ifft(Fk))
-
-
-def lpfilter(fl, cutoff_hz, samp_hz=1000, init=0, rmdc=True, istime=False):
+class Signal():    
+    def __init__(self, arr, samp_hz=1000):
+        self.samp_hz = samp_hz
+        self.arr = _mean_padding(arr)
+        
+    
+    def dft(self, rmdc=True):
     ''' 
     Return ローパスフィルターを施した1D-numpy配列(デフォルト).
         istime=True を指定すると2D-numpy配列(Parameters の istime を参照).
@@ -38,6 +34,7 @@ def lpfilter(fl, cutoff_hz, samp_hz=1000, init=0, rmdc=True, istime=False):
     istime : bool, optional (False)
         istime=True で時刻と対になった2D-numpy配列を返す. shapeは(2^n, 2).
     '''
+    fl = _mean_padding(self.arr)
     fl_len = len(fl)
     startpoint = int( init * samp_hz )
     arr = _mean_padding(fl, startpoint=startpoint)
